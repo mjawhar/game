@@ -16,6 +16,16 @@ class Monstre(pygame.sprite.Sprite):
         self.rect.x = 1000
         self.rect.y = 540
 
+    def damage(self, amount):
+        self.health -= amount
+        if self.health <= 0:
+            self.kill()
+            self.rect.x = 1000
+
     def forward(self, game):
         if not self.game.check_collision(self, self.game.all_player):
             self.rect.x -= self.velocity
+
+    # def update_health(self):
+    #     bar_color = (111, 210, 46)
+    #     bar_position =

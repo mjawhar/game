@@ -22,7 +22,8 @@ class Stone(pygame.sprite.Sprite):
     def move(self):
         self.rect.x += self.velocity
         self.rotate()
-        if self.player.game.check_collision(self, self.player.game.all_monster):
+        for monster in  self.player.game.check_collision(self, self.player.game.all_monster):
             self.player.all_projectil.remove(self)
+            monster.damage(self.player.attak)
         if self.rect.x > 1080:
             self.player.all_projectil.remove(self)
